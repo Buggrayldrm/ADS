@@ -31,4 +31,19 @@ public class Messages {
     public static String requestThrowFindByMessage="ilgili tc ye ait request bulunamadı.";
 
     public static String requestFindTcMessage="Tc ye göre request geldi";
+
+    public static String reportingOfListMessage="Enkazlar listelendi";
+
+    public static String throwReportingUpdateMessage="ilgili id ye ait enkaz bulunamadı.";
+
+    public static String reportingUpdateMessage="Enkaz güncellemesi gerçekleşti";
+
+    public static String throwReportingDeleteMessage="ilgili id ye ait enkaz bulunamadı.";
+
+    public static String reportingDeleteMessage="Enkaz başarıyla silindi.";
+
+    public static String reportingThrowFindByMessage="ilgili id ye ait enkaz bulunamadı.";
+
+    public static String reportingFindTcMessage="İd ye göre enkaz geldi";
+
 }
