@@ -46,4 +46,8 @@ public class Messages {
 
     public static String reportingFindTcMessage="İd ye göre enkaz geldi";
 
+    public static final String personNotFoundMessage = "Kişi bulunamadı.";
+
+    public static final String personIsMustBeUnique = "Bu Tc ye ait aktif bir kayıt bulunmaktadır";
+
 }

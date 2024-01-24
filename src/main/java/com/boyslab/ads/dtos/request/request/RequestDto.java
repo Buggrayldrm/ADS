@@ -1,10 +1,14 @@
 package com.boyslab.ads.dtos.request.request;
 
+import com.boyslab.ads.aop.aspects.validation.request.MernisValidator;
+import com.boyslab.ads.aop.aspects.validation.request.TcController;
 import com.boyslab.ads.entities.Category;
 import com.boyslab.ads.entities.Request;
 import com.boyslab.ads.entities.enums.Status;
 
+@MernisValidator
 public record RequestDto(
+        @TcController
         String tc,
         String name,
         String surname,

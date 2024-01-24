@@ -11,12 +11,11 @@ import java.util.List;
 public interface RequestService {
    DataResult<List<RequestResponseDto>> GetAll();
 
-   Result add(RequestDto requestDto);
+   Result add(RequestDto requestDto) throws Exception;
 
    Result update (RequestDto requestDto);
 
-   Result delete(int tc);
+   Result delete(String  tc);
 
-
-   DataResult<RequestResponseDto> getByTc(int tc);
+   DataResult<RequestResponseDto> getByTc(String tc);
 }

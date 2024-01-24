@@ -4,7 +4,7 @@ import com.boyslab.ads.dtos.request.reportingDebris.ReportingDebrisDto;
 import com.boyslab.ads.entities.ReportingDebris;
 
 public record ReportingDebrisResponseDto(
-        String id,
+        Integer id,
         String phoneNumber,
         String imageUrl,
         String city,
@@ -14,8 +14,8 @@ public record ReportingDebrisResponseDto(
         String locationDescription,
         Boolean ekipVarMı
 ) {
-    public static ReportingDebrisDto convertToDto(ReportingDebris reportingDebris){
-        return new ReportingDebrisDto(
+    public static ReportingDebrisResponseDto convertToDto(ReportingDebris reportingDebris){
+        return new ReportingDebrisResponseDto(
                 reportingDebris.getId(),
                 reportingDebris.getPhoneNumber(),
                 reportingDebris.getImage(),

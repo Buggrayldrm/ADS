@@ -8,9 +8,8 @@ import com.boyslab.ads.core.result.SuccessResult;
 import com.boyslab.ads.dataAccess.ReportingDebrisRepository;
 import com.boyslab.ads.dtos.request.reportingDebris.ReportingDebrisDto;
 import com.boyslab.ads.dtos.response.reportingDebris.ReportingDebrisResponseDto;
-import com.boyslab.ads.dtos.response.request.RequestResponseDto;
 import com.boyslab.ads.entities.ReportingDebris;
-import com.boyslab.ads.entities.Request;
+import com.boyslab.ads.service.Messages;
 import com.boyslab.ads.service.abstracts.ReportingDebrisService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,21 +25,19 @@ import static com.boyslab.ads.service.Messages.*;
 public class ReportingDebrisBusiness implements ReportingDebrisService {
     private final ReportingDebrisRepository reportingDebrisRepository;
 
+
     @Override
-    public DataResult<List<ReportingDebrisDto>> GetAll() {
-        List<ReportingDebris> list = this.reportingDebrisRepository.findAll();
+    public DataResult<List<ReportingDebrisResponseDto>> GetAll() {
 
-        List<ReportingDebrisDto> reportingDebrisDtos = new ArrayList<>();
+        var reportingDebrisResponseDtoLit = this.reportingDebrisRepository.findAll();
+        List<ReportingDebrisResponseDto> responses = reportingDebrisResponseDtoLit
+                .stream()
+                .map(ReportingDebrisResponseDto::convertToDto)
+                .toList();
 
-        for(ReportingDebris reportingDebris : list){
-            ReportingDebrisDto reportingDebrisDto = ReportingDebrisResponseDto.convertToDto(reportingDebris);
-            reportingDebrisDtos.add(reportingDebrisDto);
-        }
 
-        return new SuccessDataResult<>(reportingOfListMessage,reportingDebrisDtos);
+        return new SuccessDataResult<>(reportingOfListMessage,responses);
     }
-
-
 
     @Override
     public Result add(ReportingDebrisDto reportingDebrisDto) {
@@ -78,9 +75,12 @@ public class ReportingDebrisBusiness implements ReportingDebrisService {
 
     @Override
     public DataResult<ReportingDebrisResponseDto> getById(int id) {
-        ReportingDebris findReportingDebris=this.reportingDebrisRepository.findById(id).orElseThrow(()->new BusinessException(reportingThrowFindByMessage));
+        var report = this.reportingDebrisRepository.findById(id)
+                .orElseThrow(()-> new BusinessException(reportingThrowFindByMessage));
 
-        ReportingDebrisResponseDto reportingDebrisResponseDto=ReportingDebrisResponseDto.convertToDto(findReportingDebris);
-        return new SuccessDataResult<>(requestFindTcMessage ,reportingDebrisResponseDto);//todo:Burada bir hata var anlamadım.!!
+        ReportingDebrisResponseDto dto = ReportingDebrisResponseDto.convertToDto(report);
+
+        return new SuccessDataResult<>(dto);
     }
+
 }

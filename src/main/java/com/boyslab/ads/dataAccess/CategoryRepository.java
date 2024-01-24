@@ -1,5 +1,4 @@
 package com.boyslab.ads.dataAccess;
-
 import com.boyslab.ads.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
