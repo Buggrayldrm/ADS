@@ -9,9 +9,11 @@ import com.boyslab.ads.dataAccess.RequestRepository;
 import com.boyslab.ads.dtos.request.category.CategoryAddRequest;
 import com.boyslab.ads.dtos.request.request.RequestDto;
 import com.boyslab.ads.dtos.response.category.CategoryResponseDto;
+import com.boyslab.ads.dtos.response.request.RequestDetailDto;
 import com.boyslab.ads.dtos.response.request.RequestResponseDto;
 import com.boyslab.ads.entities.Category;
 import com.boyslab.ads.entities.Request;
+import com.boyslab.ads.entities.enums.Status;
 import com.boyslab.ads.service.Messages;
 import com.boyslab.ads.service.abstracts.RequestService;
 import com.boyslab.ads.service.mernis.HSCKPSPublicSoap;
@@ -31,8 +33,6 @@ import static com.boyslab.ads.service.Messages.*;
 public class RequestBusiness implements RequestService {
 
     private final RequestRepository requestRepository;
-
-    private final HSCKPSPublicSoap mernis;
 
     @Override
     public DataResult<List<RequestResponseDto>> GetAll() {
@@ -72,7 +72,6 @@ public class RequestBusiness implements RequestService {
         request.setNeighbourhood(requestDto.neighbourhood());
         request.setStreet(requestDto.street());
         request.setLocationDescription(requestDto.locationDescription());
-        request.setStatus(requestDto.status());
        //todo:category getirmeye bakılacak
 
         this.requestRepository.save(request);
@@ -88,6 +87,36 @@ public class RequestBusiness implements RequestService {
 
 
         return new SuccessResult(requestDeleteMessage);
+    }
+
+    @Override
+    public Result updateStatus(String tc, Status status) {
+
+        var request = this.requestRepository.findById(tc).orElseThrow(()->new BusinessException(throwRequestUpdateMessage));
+
+        request.setStatus(status);
+
+        this.requestRepository.save(request);
+
+        return new SuccessResult(requestUpdateMessage);
+    }
+
+    @Override
+    public DataResult<List<RequestResponseDto>> getAllByStatus(Status status) {
+
+        List<Request> result = this.requestRepository.findAllByStatus(status);
+
+         List<RequestResponseDto> responseDtos = result.stream().map(RequestResponseDto::convertToDto).toList();
+
+        return new SuccessDataResult<>(responseDtos);
+    }
+
+    @Override
+    public DataResult<List<RequestDetailDto>> getAllDetails() {
+        List<RequestDetailDto> detailDtos = this.requestRepository.getDetails();
+
+
+        return new SuccessDataResult<>(detailDtos);
     }
 
     @Override

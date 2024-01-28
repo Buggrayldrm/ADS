@@ -20,7 +20,6 @@ public record RequestDto(
         String neighbourhood,
         String street,
         String locationDescription,
-        Status status,
         int categoryId
         ) {
     public static Request convertToEntity(RequestDto dto){
@@ -36,7 +35,7 @@ public record RequestDto(
         request.setSurname(dto.surname);
         request.setNeighbourhood(dto.neighbourhood);
         request.setStreet(dto.street);
-        request.setStatus(dto.status);
+        request.setStatus(Status.IN_PROGGRESS);
         request.setCategory(category);
         request.setLocationDescription(dto.locationDescription);
         request.setTc(dto.tc);

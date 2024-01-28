@@ -28,9 +28,15 @@ public class RequestController extends BaseController{
 
 
     @PostMapping("add")
-    public ResponseEntity<Result> add(@Valid @RequestBody RequestDto dto){
+    public ResponseEntity<Result> add(@Valid @RequestBody RequestDto dto) throws Exception {
         var result = this.requestService.add(dto);
         return responseNoData(result);
+    }
+
+    @GetMapping("getdetails")
+    public ResponseEntity<Result> getDetails(){
+        var result = this.requestService.getAllDetails();
+        return responseData(result);
     }
 
     @PostMapping("update")

@@ -6,12 +6,14 @@ import com.boyslab.ads.dtos.request.request.RequestDto;
 import com.boyslab.ads.service.mernis.HSCKPSPublicSoap;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class MernisValidatorRules implements ConstraintValidator<MernisValidator, RequestDto> {
 
     private HSCKPSPublicSoap mernis;
+
+    public MernisValidatorRules(HSCKPSPublicSoap mernis) {
+        this.mernis = mernis;
+    }
 
     @Override
     public boolean isValid(RequestDto value, ConstraintValidatorContext context) {

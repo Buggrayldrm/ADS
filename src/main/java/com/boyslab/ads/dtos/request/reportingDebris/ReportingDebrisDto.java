@@ -12,8 +12,6 @@ public record ReportingDebrisDto(
         String street,
         String locationDescription,
         Boolean ekipVarMı
-
-
 ) {
     public static ReportingDebris convertToEntity(ReportingDebrisDto dto){
 
