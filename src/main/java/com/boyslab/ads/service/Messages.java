@@ -50,4 +50,15 @@ public class Messages {
 
     public static final String personIsMustBeUnique = "Bu Tc ye ait aktif bir kayıt bulunmaktadır";
 
+    public static final String debrisHelperListMessage= "Enkaza yardım ekipleri listelendi";
+
+    public static final String debrisHelperAddMesage="Enkaz yardım ekibi başarıyla eklendi";
+
+    public static final  String debrisHelperDeleteMessage= "Enkaz yardım ekibi bilgisi silindi.";
+
+    public static final String debrisHelperFindMessage="İlgili idye uygun enkaz yardım ekibi bulunamadı";
+
+    public static final String debrisHelperUpdateMessage="İlgili ıdye uygun yardım ekibi bilgileri güncellendi.";
+
+    public static final String debrisThrowFindByMessage="İlgili id ye ait enkaz yardım ekibi bulunamadı";
 }
