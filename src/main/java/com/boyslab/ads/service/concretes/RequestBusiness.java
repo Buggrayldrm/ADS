@@ -8,6 +8,7 @@ import com.boyslab.ads.core.result.SuccessResult;
 import com.boyslab.ads.dataAccess.RequestRepository;
 import com.boyslab.ads.dtos.request.category.CategoryAddRequest;
 import com.boyslab.ads.dtos.request.request.RequestDto;
+import com.boyslab.ads.dtos.request.request.UpdateRequestStatusDto;
 import com.boyslab.ads.dtos.response.category.CategoryResponseDto;
 import com.boyslab.ads.dtos.response.request.RequestDetailDto;
 import com.boyslab.ads.dtos.response.request.RequestResponseDto;
@@ -30,7 +31,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public class RequestBusiness implements RequestService {
+public final class RequestBusiness implements RequestService {
 
     private final RequestRepository requestRepository;
 
@@ -90,11 +91,11 @@ public class RequestBusiness implements RequestService {
     }
 
     @Override
-    public Result updateStatus(String tc, Status status) {
+    public Result updateStatus(UpdateRequestStatusDto dto) {
 
-        var request = this.requestRepository.findById(tc).orElseThrow(()->new BusinessException(throwRequestUpdateMessage));
+        var request = this.requestRepository.findById(dto.tc()).orElseThrow(()->new BusinessException(throwRequestUpdateMessage));
 
-        request.setStatus(status);
+        request.setStatus(dto.status());
 
         this.requestRepository.save(request);
 

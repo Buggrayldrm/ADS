@@ -1,9 +1,7 @@
 package com.boyslab.ads.dtos.request.reportingDebris;
 
 import com.boyslab.ads.entities.ReportingDebris;
-
-public record ReportingDebrisDto(
-        int id,
+public record AddReportingDebrisDSto(
         String phoneNumber,
         String imageUrl,
         String city,
@@ -13,10 +11,9 @@ public record ReportingDebrisDto(
         String locationDescription,
         Boolean ekipVarMı
 ) {
-    public static ReportingDebris convertToEntity(ReportingDebrisDto dto){
+    public static ReportingDebris convertToEntity(AddReportingDebrisDSto dto){
 
         ReportingDebris reportingDebris=new ReportingDebris();
-        reportingDebris.setId(dto.id);
         reportingDebris.setPhoneNumber(dto.phoneNumber);
         reportingDebris.setImage(dto.imageUrl);
         reportingDebris.setCity(dto.city);

@@ -6,6 +6,7 @@ import com.boyslab.ads.core.result.Result;
 import com.boyslab.ads.core.result.SuccessDataResult;
 import com.boyslab.ads.core.result.SuccessResult;
 import com.boyslab.ads.dataAccess.ReportingDebrisRepository;
+import com.boyslab.ads.dtos.request.reportingDebris.AddReportingDebrisDSto;
 import com.boyslab.ads.dtos.request.reportingDebris.ReportingDebrisDto;
 import com.boyslab.ads.dtos.response.reportingDebris.ReportingDebrisResponseDto;
 import com.boyslab.ads.entities.ReportingDebris;
@@ -22,7 +23,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public class ReportingDebrisBusiness implements ReportingDebrisService {
+public final class ReportingDebrisBusiness implements ReportingDebrisService {
     private final ReportingDebrisRepository reportingDebrisRepository;
 
 
@@ -40,8 +41,8 @@ public class ReportingDebrisBusiness implements ReportingDebrisService {
     }
 
     @Override
-    public Result add(ReportingDebrisDto reportingDebrisDto) {
-        ReportingDebris reportingDebris = ReportingDebrisDto.convertToEntity(reportingDebrisDto);
+    public Result add(AddReportingDebrisDSto reportingDebrisDto) {
+        ReportingDebris reportingDebris = AddReportingDebrisDSto.convertToEntity(reportingDebrisDto);
         this.reportingDebrisRepository.save(reportingDebris);
 
 

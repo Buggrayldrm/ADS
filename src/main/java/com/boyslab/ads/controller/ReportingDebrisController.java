@@ -2,6 +2,7 @@ package com.boyslab.ads.controller;
 
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
+import com.boyslab.ads.dtos.request.reportingDebris.AddReportingDebrisDSto;
 import com.boyslab.ads.dtos.request.reportingDebris.ReportingDebrisDto;
 import com.boyslab.ads.dtos.response.reportingDebris.ReportingDebrisResponseDto;
 import com.boyslab.ads.service.abstracts.ReportingDebrisService;
@@ -22,7 +23,7 @@ public class ReportingDebrisController  extends BaseController{
 
 
     @PostMapping("add")
-    public ResponseEntity<Result> add(@Valid @RequestBody ReportingDebrisDto dto){
+    public ResponseEntity<Result> add(@Valid @RequestBody AddReportingDebrisDSto dto){
 
     var result = this.service.add(dto);
     return responseNoData(result);

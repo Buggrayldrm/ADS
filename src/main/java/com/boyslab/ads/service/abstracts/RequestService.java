@@ -3,6 +3,7 @@ package com.boyslab.ads.service.abstracts;
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
 import com.boyslab.ads.dtos.request.request.RequestDto;
+import com.boyslab.ads.dtos.request.request.UpdateRequestStatusDto;
 import com.boyslab.ads.dtos.response.request.RequestDetailDto;
 import com.boyslab.ads.dtos.response.request.RequestResponseDto;
 import com.boyslab.ads.entities.enums.Status;
@@ -20,7 +21,7 @@ public interface RequestService {
    Result delete(String  tc);
 
 
-   Result updateStatus(String tc, Status status);
+   Result updateStatus(UpdateRequestStatusDto dto);
 
    DataResult<List<RequestResponseDto>> getAllByStatus(Status status);
 

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "suspended_helps")
 @Getter
@@ -45,5 +47,8 @@ public class SuspendedHelp {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "suspendedHelp", cascade = CascadeType.ALL)
+    private List<SuspendedHelpImage> images;
 
 }

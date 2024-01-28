@@ -20,7 +20,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryBusiness implements CategoryService {
+public final class CategoryBusiness implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 

@@ -3,7 +3,9 @@ package com.boyslab.ads.controller;
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
 import com.boyslab.ads.dtos.request.request.RequestDto;
+import com.boyslab.ads.dtos.request.request.UpdateRequestStatusDto;
 import com.boyslab.ads.dtos.response.request.RequestResponseDto;
+import com.boyslab.ads.entities.enums.Status;
 import com.boyslab.ads.service.abstracts.RequestService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +56,17 @@ public class RequestController extends BaseController{
     public ResponseEntity<DataResult<RequestResponseDto>> getById(@PathVariable("tc") String tc){
         var result = this.requestService.getByTc(tc);
         return responseData(result);
+    }
+    @PutMapping("updatestatus")
+    public ResponseEntity<Result> updateStatus(@Valid @RequestBody UpdateRequestStatusDto dto){
+        var result = this.requestService.updateStatus(dto);
+        return responseNoData(result);
+    }
+
+    @GetMapping("getallbystatus")
+    public ResponseEntity<DataResult<List<RequestResponseDto>>> getAllByStatus(@RequestParam Status status){
+        var result = this.requestService.getAllByStatus(status);
+        return  responseData(result);
     }
 
 }

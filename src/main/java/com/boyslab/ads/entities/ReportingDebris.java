@@ -17,6 +17,7 @@ public class ReportingDebris {
 
     @Id
     @Column(name = "debris_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "phone_number")

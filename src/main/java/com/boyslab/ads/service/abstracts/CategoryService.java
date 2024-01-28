@@ -6,9 +6,10 @@ import com.boyslab.ads.dtos.request.category.CategoryAddRequest;
 import com.boyslab.ads.dtos.request.category.CategoryUpdateRequest;
 import com.boyslab.ads.dtos.response.category.CategoryResponseDto;
 
+
 import java.util.List;
 
-public interface CategoryService {
+public  interface CategoryService {
     DataResult<List<CategoryResponseDto>> GetAll();
     Result add(CategoryAddRequest categoryAddRequest);
 

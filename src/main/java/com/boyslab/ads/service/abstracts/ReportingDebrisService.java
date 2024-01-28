@@ -2,6 +2,7 @@ package com.boyslab.ads.service.abstracts;
 
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
+import com.boyslab.ads.dtos.request.reportingDebris.AddReportingDebrisDSto;
 import com.boyslab.ads.dtos.request.reportingDebris.ReportingDebrisDto;
 import com.boyslab.ads.dtos.response.reportingDebris.ReportingDebrisResponseDto;
 import com.boyslab.ads.entities.ReportingDebris;
@@ -12,10 +13,7 @@ public interface ReportingDebrisService {
 
     DataResult<List<ReportingDebrisResponseDto>> GetAll();
 
-
-
-
-    Result add(ReportingDebrisDto reportingDebrisDto);
+    Result add(AddReportingDebrisDSto reportingDebrisDto);
 
     Result update(ReportingDebrisDto reportingDebrisDto);
 
