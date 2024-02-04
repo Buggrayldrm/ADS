@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Request {
+public final class Request {
 
     @Id
     @Column(name = "tc_number")

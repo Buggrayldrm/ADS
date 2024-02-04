@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "reporting_debris")
 
-public class ReportingDebris {
+public final class ReportingDebris {
 
     @Id
     @Column(name = "debris_id")

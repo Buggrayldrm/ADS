@@ -27,14 +27,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorDataResult<Map<String,String>> handleExceptionForField(MethodArgumentNotValidException exception){
+    public ErrorDataResult<Map<String,String>> handleExceptionValidationRequest(MethodArgumentNotValidException exception){
         Map<String,String> validationErrors= new HashMap<>();
         ErrorDataResult<Map<String,String>> error= new ErrorDataResult<>("validation rules",validationErrors);
         if (!exception.getFieldErrors().isEmpty()){
             for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
                 validationErrors.put(fieldError.getField(),fieldError.getDefaultMessage());
             }
-
         }
         if (!exception.getGlobalErrors().isEmpty()){
             for (ObjectError objectError: exception.getBindingResult().getGlobalErrors()){

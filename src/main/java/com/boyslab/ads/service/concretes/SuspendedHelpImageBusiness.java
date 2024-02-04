@@ -2,13 +2,13 @@ package com.boyslab.ads.service.concretes;
 
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
+import com.boyslab.ads.core.result.SuccessDataResult;
 import com.boyslab.ads.core.result.SuccessResult;
 import com.boyslab.ads.dataAccess.SuspendedHelpImageRepository;
 import com.boyslab.ads.dtos.request.suspendedHelpImage.AddSuspendedHelpImageRequest;
 import com.boyslab.ads.dtos.response.suspendedHelpImage.SuspendedHelpImageResponse;
-import com.boyslab.ads.service.Constants;
 import com.boyslab.ads.service.abstracts.SuspendedHelpImageService;
-import com.boyslab.ads.service.helpers.CloudStorageService;
+import com.boyslab.ads.service.helpers.CloudService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,12 +21,11 @@ import java.util.List;
 public final class SuspendedHelpImageBusiness implements SuspendedHelpImageService {
 
     private final SuspendedHelpImageRepository repository;
-    private final CloudStorageService cloudService;
+    private final CloudService cloudService;
     @Override
     public Result add(MultipartFile file, AddSuspendedHelpImageRequest request) throws IOException {
 
-        String uploadUrl = cloudService.uploadFile(file, Constants.SuspendedHelp);
-
+        String uploadUrl =cloudService.uploadFile(file);
         var image = AddSuspendedHelpImageRequest.convertToEntity(request);
         image.setImageUrl(uploadUrl);
         this.repository.save(image);
@@ -37,8 +36,13 @@ public final class SuspendedHelpImageBusiness implements SuspendedHelpImageServi
     @Override
     public DataResult<List<SuspendedHelpImageResponse>> getAllImagesBySuspendedId(int suspendedId) {
 
+        var images = this.repository.findAllBySuspendedHelp_Id(suspendedId);
 
-        return null;
+        var response = images.stream()
+                .map(SuspendedHelpImageResponse::convertToResponse)
+                .toList();
+
+        return new SuccessDataResult<>(response);
     }
 
     @Override

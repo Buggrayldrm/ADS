@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "suspended_help_images")
 @Entity
-public class SuspendedHelpImage {
+public final class SuspendedHelpImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "suspended_help_iamge_id")

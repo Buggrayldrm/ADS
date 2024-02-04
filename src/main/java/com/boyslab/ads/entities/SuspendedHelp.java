@@ -14,14 +14,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SuspendedHelp {
+public final class SuspendedHelp {
     @Id
     @Column(name = "suspended_id")
     private Integer id;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name = "image_url")
-    private String image;
 
     @Column(name = "city")
     private String city;

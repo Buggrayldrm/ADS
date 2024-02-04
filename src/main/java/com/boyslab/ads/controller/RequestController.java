@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/requests/")
 @RestController
 @RequiredArgsConstructor
-public class RequestController extends BaseController{
+public final class RequestController extends BaseController{
 
     private final RequestService requestService;
 

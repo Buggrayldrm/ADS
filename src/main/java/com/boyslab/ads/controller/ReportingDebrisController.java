@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/api/debris/")
 @RestController
 @RequiredArgsConstructor
-public class ReportingDebrisController  extends BaseController{
+public final class ReportingDebrisController  extends BaseController{
 
 
     private  final ReportingDebrisService service;

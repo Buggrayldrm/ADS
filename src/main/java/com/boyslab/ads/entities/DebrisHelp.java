@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "debris_help")
-public class DebrisHelp {
+public final class DebrisHelp {
     //todo: Reporting Debris id si bağlanacak.
     @Id
     @Column(name = "debris_id")
