@@ -28,6 +28,9 @@ public final class DebrisHelp {
     @Column(name = "helper_surname")
     private String surname;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "helper_city")
     private String city;
 
@@ -42,8 +45,5 @@ public final class DebrisHelp {
 
     @Column(name = "helper_decription")
     private String description;
-
-
-
 
 }

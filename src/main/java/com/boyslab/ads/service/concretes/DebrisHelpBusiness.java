@@ -9,6 +9,7 @@ import com.boyslab.ads.dataAccess.DebrisHelpRepository;
 import com.boyslab.ads.dtos.request.debrisHelp.DebrisHelpDto;
 import com.boyslab.ads.dtos.response.debirsHelp.DebrisHelpResponceDto;
 import com.boyslab.ads.entities.DebrisHelp;
+import com.boyslab.ads.entities.ReportingDebris;
 import com.boyslab.ads.service.abstracts.DebrisHelpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public final class DebrisHelpBusiness implements DebrisHelpService {
+public class DebrisHelpBusiness implements DebrisHelpService {
 
     private final DebrisHelpRepository debrisHelpRepository;
 
@@ -49,7 +50,6 @@ public final class DebrisHelpBusiness implements DebrisHelpService {
     @Override
     public Result delete(int debrisId) {
         DebrisHelp findDebrisHelp =this.debrisHelpRepository.findById(debrisId).orElseThrow(()->new BusinessException(debrisHelperDeleteMessage));
-        this.debrisHelpRepository.delete(findDebrisHelp);
         return new SuccessResult(debrisHelperDeleteMessage);
     }
 

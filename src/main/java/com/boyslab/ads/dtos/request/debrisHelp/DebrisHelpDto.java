@@ -10,6 +10,8 @@ public record DebrisHelpDto(
 
         String surname,
 
+        String phoneNumber,
+
         String city,
 
         String district,
@@ -31,6 +33,8 @@ public record DebrisHelpDto(
         debrisHelp.setName(dto.name);
 
         debrisHelp.setSurname(dto.surname);
+
+        debrisHelp.setPhoneNumber(dto.phoneNumber);
 
         debrisHelp.setCity(dto.city);
 
