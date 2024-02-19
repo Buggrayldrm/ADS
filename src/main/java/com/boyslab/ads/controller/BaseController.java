@@ -16,7 +16,7 @@ public class BaseController {
 
     }
 
-    public  ResponseEntity<DataResult<?>> responseData(DataResult<?> dataResult){
+    public  ResponseEntity responseData(DataResult dataResult){
         if (dataResult.isSuccess()){
             return ResponseEntity.ok().body(dataResult);
         }
