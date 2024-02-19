@@ -9,7 +9,6 @@ import com.boyslab.ads.dataAccess.DebrisHelpRepository;
 import com.boyslab.ads.dtos.request.debrisHelp.DebrisHelpDto;
 import com.boyslab.ads.dtos.response.debirsHelp.DebrisHelpResponceDto;
 import com.boyslab.ads.entities.DebrisHelp;
-import com.boyslab.ads.entities.ReportingDebris;
 import com.boyslab.ads.service.abstracts.DebrisHelpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,10 +20,9 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public class DebrisHelpBusiness implements DebrisHelpService {
+public final class DebrisHelpBusiness implements DebrisHelpService {
 
     private final DebrisHelpRepository debrisHelpRepository;
-
 
     @Override
     public DataResult<List<DebrisHelpResponceDto>> GetAll() {
@@ -56,15 +54,9 @@ public class DebrisHelpBusiness implements DebrisHelpService {
     @Override
     public Result update(DebrisHelpDto debrisHelpDto) {
         Optional <DebrisHelp> findDebrisHelp=this.debrisHelpRepository.findById(debrisHelpDto.debrisID());
+        findDebrisHelp.orElseThrow(()-> new BusinessException(debrisHelperFindMessage));
 
-        DebrisHelp debrisHelp=findDebrisHelp.orElseThrow(()-> new BusinessException(debrisHelperFindMessage));
-        debrisHelp.setName(debrisHelpDto.name());
-        debrisHelp.setSurname(debrisHelpDto.surname());
-        debrisHelp.setCity(debrisHelpDto.city());
-        debrisHelp.setDistrict(debrisHelpDto.district());
-        debrisHelp.setNumberOfTeam(debrisHelpDto.numberOfTeam());
-        debrisHelp.setEquipment(debrisHelpDto.equipment());
-        debrisHelp.setDescription(debrisHelpDto.description());
+        DebrisHelp debrisHelp = DebrisHelpDto.convertToEntity(debrisHelpDto);
 
         this.debrisHelpRepository.save(debrisHelp);
 
@@ -76,7 +68,6 @@ public class DebrisHelpBusiness implements DebrisHelpService {
         var report= this.debrisHelpRepository.findById(debrisID)
                 .orElseThrow(()->new BusinessException(debrisThrowFindByMessage));
         DebrisHelpResponceDto dto=DebrisHelpResponceDto.convertToDto(report);
-
 
         return new SuccessDataResult<>(dto);
     }

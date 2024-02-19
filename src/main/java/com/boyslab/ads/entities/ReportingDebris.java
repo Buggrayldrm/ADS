@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -43,6 +45,10 @@ public final class ReportingDebris {
 
     @Column(name = "ekipVarmı")
     private Boolean ekipVarMı;
+
+
+    @OneToMany(mappedBy = "reportingDebris")
+    private List<DebrisHelp> debrisHelps;
 
 
 

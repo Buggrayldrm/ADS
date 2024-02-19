@@ -1,10 +1,7 @@
 package com.boyslab.ads.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +15,16 @@ import lombok.Setter;
 @Table(name = "debris_help")
 public final class DebrisHelp {
     //todo: Reporting Debris id si bağlanacak.
+
+
+
     @Id
     @Column(name = "debris_id")
     private int debrisId;
+
+    @ManyToOne
+    @JoinColumn(name = "debris_id")
+    private  ReportingDebris reportingDebris;
 
     @Column(name = "helper_name")
     private String name;

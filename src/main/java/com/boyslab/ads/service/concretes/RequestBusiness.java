@@ -60,20 +60,10 @@ public final class RequestBusiness implements RequestService {
     @Override
     public Result update(RequestDto requestDto) {
         Optional <Request> findRequest = this.requestRepository.findById(requestDto.tc());
+     findRequest.orElseThrow(()->new BusinessException(throwRequestUpdateMessage));
 
-        Request request=findRequest.orElseThrow(()->new BusinessException(throwRequestUpdateMessage));
 
-        request.setName(requestDto.name());
-        request.setSurname(requestDto.surname());
-        request.setBirthDay(requestDto.birthDay());
-        request.setDescription(requestDto.description());
-        request.setPhone(requestDto.phone());
-        request.setCity(requestDto.city());
-        request.setDistrict(requestDto.district());
-        request.setNeighbourhood(requestDto.neighbourhood());
-        request.setStreet(requestDto.street());
-        request.setLocationDescription(requestDto.locationDescription());
-       //todo:category getirmeye bakılacak
+        Request request = RequestDto.convertToEntity(requestDto);
 
         this.requestRepository.save(request);
         return  new SuccessResult(requestUpdateMessage);

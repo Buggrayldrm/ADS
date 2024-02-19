@@ -1,11 +1,8 @@
 package com.boyslab.ads.dtos.request.debrisHelp;
-
-
 import com.boyslab.ads.entities.DebrisHelp;
 import com.boyslab.ads.entities.ReportingDebris;
 
-public record DebrisHelpDto(
-        int debrisID,
+public record DebrisHelpAddRequestDto(
 
         String name,
 
@@ -23,19 +20,14 @@ public record DebrisHelpDto(
 
         String description,
         int reportingDebrisId
-
-) {
-
-    public static DebrisHelp convertToEntity(DebrisHelpDto dto){
-
+)
+{
+    public static DebrisHelp convertToEntity(DebrisHelpAddRequestDto dto){
         DebrisHelp debrisHelp=new DebrisHelp();
         ReportingDebris reportingDebris = new ReportingDebris();
 
         reportingDebris.setId(dto.reportingDebrisId);
-
         debrisHelp.setReportingDebris(reportingDebris);
-
-        debrisHelp.setDebrisId(dto.debrisID);
 
         debrisHelp.setName(dto.name);
 
@@ -53,10 +45,8 @@ public record DebrisHelpDto(
 
         debrisHelp.setDescription(dto.description);
 
-
-
         return debrisHelp;
-    }
 
+    }
 
 }

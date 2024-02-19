@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 public class BaseController {
 
-    public  ResponseEntity responseNoData(Result result){
+    public  ResponseEntity<Result> responseNoData(Result result){
         if (result.isSuccess()){
             return ResponseEntity.ok().body(result);
         }
@@ -16,7 +16,7 @@ public class BaseController {
 
     }
 
-    public  ResponseEntity responseData(DataResult dataResult){
+    public  ResponseEntity<DataResult<?>> responseData(DataResult<?> dataResult){
         if (dataResult.isSuccess()){
             return ResponseEntity.ok().body(dataResult);
         }
