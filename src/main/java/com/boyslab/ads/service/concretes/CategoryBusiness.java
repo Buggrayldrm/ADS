@@ -77,6 +77,7 @@ public  class CategoryBusiness implements CategoryService {
     }
 
     @Override
+    @PerformanceLogger
     public Result delete(int id) {
         Category findCategory = this.categoryRepository.findById(id).orElseThrow(()-> new BusinessException(throwDeleteMessage));
         this.categoryRepository.delete(findCategory);

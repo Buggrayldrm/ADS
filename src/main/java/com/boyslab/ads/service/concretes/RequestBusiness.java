@@ -1,5 +1,8 @@
 package com.boyslab.ads.service.concretes;
 
+import com.boyslab.ads.aop.aspects.PerformanceLogger;
+import com.boyslab.ads.aop.aspects.logger.LoggerResult;
+import com.boyslab.ads.aop.ccs.logger.LogType;
 import com.boyslab.ads.core.exceptions.BusinessException;
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
@@ -48,6 +51,8 @@ public  class RequestBusiness implements RequestService {
     }
 
     @Override
+    @LoggerResult(type = LogType.FILE)
+    @PerformanceLogger
     public Result add(RequestDto requestDto) throws Exception {
 
         Request request = RequestDto.convertToEntity(requestDto);

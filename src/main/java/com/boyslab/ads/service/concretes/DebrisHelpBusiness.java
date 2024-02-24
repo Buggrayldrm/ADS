@@ -65,6 +65,7 @@ public  class DebrisHelpBusiness implements DebrisHelpService {
         return  new SuccessResult(debrisHelperUpdateMessage);
     }
 
+
     @Override
     public DataResult<DebrisHelpResponceDto> GetById(int debrisID) {
         var report= this.debrisHelpRepository.findById(debrisID)
