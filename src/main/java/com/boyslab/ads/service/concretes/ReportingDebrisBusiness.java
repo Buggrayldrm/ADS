@@ -23,7 +23,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public final class ReportingDebrisBusiness implements ReportingDebrisService {
+public  class ReportingDebrisBusiness implements ReportingDebrisService {
     private final ReportingDebrisRepository reportingDebrisRepository;
 
 

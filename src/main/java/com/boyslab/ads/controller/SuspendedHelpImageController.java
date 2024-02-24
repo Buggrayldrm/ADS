@@ -18,9 +18,16 @@ public final class SuspendedHelpImageController extends BaseController {
     private final SuspendedHelpImageService service;
 
 
-    @PostMapping("add")
-    public ResponseEntity<Result> add(@RequestParam("file") MultipartFile file , @RequestBody AddSuspendedHelpImageRequest request) throws IOException {
+/*    @PostMapping("add")
+    public ResponseEntity<Result> add(@RequestParam("file") MultipartFile file , @ModelAttribute AddSuspendedHelpImageRequest request) throws IOException {
         var response = this.service.add(file,request);
+        return responseNoData(response);
+    }*/
+
+
+    @PostMapping("add")
+    public ResponseEntity<Result> add(@RequestParam("file") MultipartFile file) throws IOException {
+        var response = this.service.add(file,new AddSuspendedHelpImageRequest(1));
         return responseNoData(response);
     }
 }

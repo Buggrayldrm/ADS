@@ -2,7 +2,7 @@ package com.boyslab.ads.dtos.request.debrisHelp;
 import com.boyslab.ads.entities.DebrisHelp;
 import com.boyslab.ads.entities.ReportingDebris;
 
-public record DebrisHelpAddRequestDto(
+public  record DebrisHelpAddRequestDto(
 
         String name,
 

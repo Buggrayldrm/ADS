@@ -18,7 +18,7 @@ import java.util.List;
 public final class ReportingDebris {
 
     @Id
-    @Column(name = "debris_id")
+    @Column(name = "reporting_debris_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

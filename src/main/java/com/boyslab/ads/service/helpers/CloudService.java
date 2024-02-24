@@ -20,7 +20,7 @@ public final class CloudService {
 
         Storage storage = StorageOptions.getDefaultInstance().getService();
         BlobInfo blobInfo = storage.create(
-                BlobInfo.newBuilder("gs://adss-b5b09.appspot.com", Objects.requireNonNull(file.getOriginalFilename())).build(),
+                BlobInfo.newBuilder("adss-b5b09.appspot.com", Objects.requireNonNull(file.getOriginalFilename())).build(),
                 file.getBytes(),
                 Storage.BlobTargetOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ)
         );

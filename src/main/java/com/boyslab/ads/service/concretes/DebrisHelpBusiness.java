@@ -1,5 +1,6 @@
 package com.boyslab.ads.service.concretes;
 
+import com.boyslab.ads.aop.aspects.PerformanceLogger;
 import com.boyslab.ads.core.exceptions.BusinessException;
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
@@ -20,7 +21,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public final class DebrisHelpBusiness implements DebrisHelpService {
+public  class DebrisHelpBusiness implements DebrisHelpService {
 
     private final DebrisHelpRepository debrisHelpRepository;
 
@@ -38,6 +39,7 @@ public final class DebrisHelpBusiness implements DebrisHelpService {
     }
 
     @Override
+    @PerformanceLogger
     public Result add(DebrisHelpDto debrisHelpDto) {
 
         DebrisHelp debrisHelp = DebrisHelpDto.convertToEntity(debrisHelpDto);

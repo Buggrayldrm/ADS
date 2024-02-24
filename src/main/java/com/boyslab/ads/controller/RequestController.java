@@ -4,6 +4,7 @@ import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
 import com.boyslab.ads.dtos.request.request.RequestDto;
 import com.boyslab.ads.dtos.request.request.UpdateRequestStatusDto;
+import com.boyslab.ads.dtos.response.request.RequestDetailDto;
 import com.boyslab.ads.dtos.response.request.RequestResponseDto;
 import com.boyslab.ads.entities.enums.Status;
 import com.boyslab.ads.service.abstracts.RequestService;
@@ -67,6 +68,13 @@ public final class RequestController extends BaseController{
     public ResponseEntity<DataResult<List<RequestResponseDto>>> getAllByStatus(@RequestParam Status status){
         var result = this.requestService.getAllByStatus(status);
         return  responseData(result);
+    }
+
+    @GetMapping("getdetails/{id}")
+    public ResponseEntity<DataResult<RequestDetailDto>> getDetailsByCategoryId(@PathVariable("id") int id){
+
+        var result = this.requestService.getAllDetailsByCategoryId(id);
+        return responseData(result);
     }
 
 }

@@ -23,7 +23,7 @@ public final class DebrisHelp {
     private int debrisId;
 
     @ManyToOne
-    @JoinColumn(name = "debris_id")
+    @JoinColumn(name = "reporting_debris_id")
     private  ReportingDebris reportingDebris;
 
     @Column(name = "helper_name")

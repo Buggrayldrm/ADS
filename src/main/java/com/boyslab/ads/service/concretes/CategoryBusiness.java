@@ -1,5 +1,8 @@
 package com.boyslab.ads.service.concretes;
 
+import com.boyslab.ads.aop.aspects.PerformanceLogger;
+import com.boyslab.ads.aop.aspects.logger.LoggerResult;
+import com.boyslab.ads.aop.ccs.logger.LogType;
 import com.boyslab.ads.core.exceptions.BusinessException;
 import com.boyslab.ads.core.result.DataResult;
 import com.boyslab.ads.core.result.Result;
@@ -20,7 +23,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public final class CategoryBusiness implements CategoryService {
+public  class CategoryBusiness implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 
@@ -47,6 +50,8 @@ public final class CategoryBusiness implements CategoryService {
     }
 
     @Override
+    @LoggerResult(type = LogType.FILE)
+    @PerformanceLogger
     public Result add(CategoryAddRequest categoryAddRequest) {
         Category category = CategoryAddRequest.convertToEntity(categoryAddRequest);
         this.categoryRepository.save(category);
@@ -55,6 +60,7 @@ public final class CategoryBusiness implements CategoryService {
         return new  SuccessResult(categoryAddMessage);
     }
 
+    @LoggerResult(type = LogType.FILE)
     @Override
     public Result update(CategoryUpdateRequest categoryUpdateRequest) {
         Optional<Category> findCategory = this.categoryRepository.findById(categoryUpdateRequest.id());

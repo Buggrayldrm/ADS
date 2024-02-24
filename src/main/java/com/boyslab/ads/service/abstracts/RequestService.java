@@ -21,6 +21,8 @@ public interface RequestService {
    Result delete(String  tc);
 
 
+   DataResult<List<RequestDetailDto>> getAllDetailsByCategoryId(int categoryId);
+
    Result updateStatus(UpdateRequestStatusDto dto);
 
    DataResult<List<RequestResponseDto>> getAllByStatus(Status status);

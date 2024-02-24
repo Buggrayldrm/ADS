@@ -31,7 +31,7 @@ import static com.boyslab.ads.service.Messages.*;
 
 @Service
 @RequiredArgsConstructor
-public final class RequestBusiness implements RequestService {
+public  class RequestBusiness implements RequestService {
 
     private final RequestRepository requestRepository;
 
@@ -78,6 +78,14 @@ public final class RequestBusiness implements RequestService {
 
 
         return new SuccessResult(requestDeleteMessage);
+    }
+
+    @Override
+    public DataResult<List<RequestDetailDto>> getAllDetailsByCategoryId(int categoryId) {
+        var details = this.requestRepository.getDetailsByCategoryId(categoryId);
+
+        return new SuccessDataResult<>(details);
+
     }
 
     @Override

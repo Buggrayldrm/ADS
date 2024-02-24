@@ -23,7 +23,7 @@ import static com.boyslab.ads.service.Messages.suspendedHelpImageNotFound;
 
 @Service
 @RequiredArgsConstructor
-public final class SuspendedHelpImageBusiness implements SuspendedHelpImageService {
+public  class SuspendedHelpImageBusiness implements SuspendedHelpImageService {
 
     private final SuspendedHelpImageRepository repository;
     private final CloudService cloudService;
