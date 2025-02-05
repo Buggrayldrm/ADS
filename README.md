@@ -25,7 +25,8 @@ Acil durumlarda, kullanıcılar uygulama üzerinden SOS bildirimi gönderir. Ayn
 - Şeffaflık
 - Güvenli ve Etkili Yardım
 
-Tanıtım videosunu aşağıdan izleyebilirsiniz.
+Tanıtım videosunu aşağıdaki LinkedIn adresinden izleyebilirsiniz:
+[Detaylı Video](https://www.linkedin.com/feed/update/urn:li:activity:7168522985820172289/)
 
 ## Proje Teknolojileri
 - **Backend**: Java Spring Boot
